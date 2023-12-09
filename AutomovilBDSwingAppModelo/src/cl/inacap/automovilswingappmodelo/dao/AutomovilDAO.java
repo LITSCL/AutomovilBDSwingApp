@@ -16,33 +16,33 @@ public class AutomovilDAO {
 	//Método que añade objetos de tipo Automovil a la tabla automoviles que se encuentra en la base de datos.
 	public boolean save(Automovil au) {
 		// Todos los métodos que se conecten a una base de datos deben seguir los 4 siguientes pasos:
-				boolean resultado;
-				try {
-					//1. Conectarse a la base de datos.
-					bdUtil.conectar();
-					System.out.println("Conexión a la DB: " + bdUtil.conectar());
-					//2. Definir la sentencia sql (INSERT).
-					String sql = "INSERT INTO automovil" + "(patente, kilometraje, nombre_de_contacto,tipo_de_atencion, tipo_de_motor)" + " VALUES(?, ?, ?, ?, ?)"; //Los ID Autoincrementales no van aca, ya que el dbms asigna su valor.
-					Connection co = bdUtil.getConexion(); //Esta instrucción retorna la conexión activa.
-					PreparedStatement st = co.prepareStatement(sql); //Aca se prepara el statement.
-					st.setString(1, au.getPatente());
-					st.setInt(2, au.getKilometraje());
-					st.setString(3, au.getNombreDeContacto());
-					st.setString(4, au.getTipoDeAtencion());
-					st.setString(5, au.getTipoDeMotor());
-					//3. Ejecutar el SQL.
-					st.executeUpdate();
-					resultado = true;
-					System.out.println("Ejecución del SQL: " + resultado);
-				} catch (Exception ex) {
-					resultado = false;
-					System.out.println("Ejecución del SQL: " + resultado);
-					//4. Desconectarse.
-				} finally { //Esta instrucción se ejecuta se caiga o no el programa.
-					bdUtil.desconectar(); //Envia la petición de desconexión al dbms.
-				}
-				return resultado;
-			}
+		boolean resultado;
+		try {
+			//1. Conectarse a la base de datos.
+			bdUtil.conectar();
+			System.out.println("Conexión a la DB: " + bdUtil.conectar());
+			//2. Definir la sentencia sql (INSERT).
+			String sql = "INSERT INTO automovil" + "(patente, kilometraje, nombre_de_contacto,tipo_de_atencion, tipo_de_motor)" + " VALUES(?, ?, ?, ?, ?)"; //Los ID Autoincrementales no van aca, ya que el dbms asigna su valor.
+			Connection co = bdUtil.getConexion(); //Esta instrucción retorna la conexión activa.
+			PreparedStatement st = co.prepareStatement(sql); //Aca se prepara el statement.
+			st.setString(1, au.getPatente());
+			st.setInt(2, au.getKilometraje());
+			st.setString(3, au.getNombreDeContacto());
+			st.setString(4, au.getTipoDeAtencion());
+			st.setString(5, au.getTipoDeMotor());
+			//3. Ejecutar el SQL.
+			st.executeUpdate();
+			resultado = true;
+			System.out.println("Ejecución del SQL: " + resultado);
+		} catch (Exception ex) {
+			resultado = false;
+			System.out.println("Ejecución del SQL: " + resultado);
+			//4. Desconectarse.
+		} finally { //Esta instrucción se ejecuta se caiga o no el programa.
+			bdUtil.desconectar(); //Envia la petición de desconexión al dbms.
+		}
+		return resultado;
+	}
 	
 	//Método que trae todos los objetos de la tabla llamada automoviles que se encuentra en la base de datos.
 	public List<Automovil> getAll() {
@@ -54,14 +54,14 @@ public class AutomovilDAO {
 			bdUtil.conectar();
 			System.out.println("Conexión a la DB: " + bdUtil.conectar());
 			//2. Definir la sentencia sql (SELECT).
-			String sql = "SELECT id,patente, kilometraje, nombre_de_contacto, tipo_de_atencion, tipo_de_motor" + " FROM automovil";
+			String sql = "SELECT id, patente, kilometraje, nombre_de_contacto, tipo_de_atencion, tipo_de_motor" + " FROM automovil";
 			PreparedStatement st = bdUtil.getConexion().prepareStatement(sql); //Aca se trae la conexión y se prepara el statement.
 			//3. Ejecutar el SQL.
 			ResultSet rs = st.executeQuery();
 			resultado = true;
 			System.out.println("Ejecución del SQL: " + resultado);
 			while (rs.next()) { //Se repite mientras avance el puntero.
-				Automovil au=new Automovil();
+				Automovil au = new Automovil();
 				au.setId(rs.getInt(1));
 				au.setPatente(rs.getString(2));
 				au.setKilometraje(rs.getInt(3));
