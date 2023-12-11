@@ -153,7 +153,6 @@ public class IngresarAutomovilFrame extends JInternalFrame { //Esta clase hereda
 			daoAutomovil.save(au); //Aca se añade el automovil a la lista.
 			JOptionPane.showMessageDialog(null, "Automovil ingresado"); //Esta instrucción muestra un mensaje cuando el automovil es ingresado.
 			this.dispose(); //Esta instrucción cierra la ventana (JInternal Frame llamado (Ingresar Automovil)).
-			
 		}
 	}
 }

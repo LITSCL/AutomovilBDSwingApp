@@ -122,5 +122,4 @@ public class StartFrame extends JFrame {
 		desktopPane.add(this.modificarAutomovilFrame); //Agregar el frame creado al desktopPane (Se debe utilizar el objeto desktopPane porque es allí donde está agregado el frame).
 		this.modificarAutomovilFrame.setVisible(true); //Hacer visible el nuevo frame.
 	}
-
 }

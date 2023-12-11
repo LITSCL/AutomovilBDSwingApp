@@ -20,7 +20,6 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 	private JTable tableMostrarAutomovil; 
 	private JComboBox comboBoxFiltrarAutomoviles;
 	private JButton btnFiltrar;
-	
 
 	//Proceso de creación del frame.
 	public MostrarAutomovilFrame() {
@@ -74,29 +73,29 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 		String seleccion = (String)this.comboBoxFiltrarAutomoviles.getSelectedItem(); //En esta variable se almacena el valor del JComboBox.
 		AutomovilDAO daoAutomovil = new AutomovilDAO();
 		
-			//1. Proceso de traer los estudiantes ingresados.
-			List<Automovil> automovilesFiltrados = daoAutomovil.filtrarAutomovil(seleccion); //En esta lista se almacenan todos los automoviles filtrados según el valor del JcomboBox.
-			
-			//2. Proceso de creación del TableModel.
-			DefaultTableModel mo = new DefaultTableModel(); //Este es el modelo donde van a ir las filas y columnas.
-			
-			//3. Proceso de llenado de columnas.
-			mo.addColumn("Patente"); //Se añade una columna llamada (Nombre).
-			mo.addColumn("Nombre de contacto"); //Se añade una columna llamada (Asignatura).
-			mo.addColumn("Tipo de atención"); //Se añade una columna llamada (Promedio).
-			
-			//4. Proceso de agregación de filas.
-			for (Automovil au : automovilesFiltrados) {
-				Object[] fila = new Object[3];
-				fila[0] = au.getPatente();
-				fila[1] = au.getNombreDeContacto();
-				fila[2] = au.getTipoDeAtencion();
-				mo.addRow(fila);
-			}	
-			
-			//5. Proceso de definir en la tabla el TableModel.
-			tableMostrarAutomovil.setModel(mo);
-		}
+		//1. Proceso de traer los estudiantes ingresados.
+		List<Automovil> automovilesFiltrados = daoAutomovil.filtrarAutomovil(seleccion); //En esta lista se almacenan todos los automoviles filtrados según el valor del JcomboBox.
+		
+		//2. Proceso de creación del TableModel.
+		DefaultTableModel mo = new DefaultTableModel(); //Este es el modelo donde van a ir las filas y columnas.
+		
+		//3. Proceso de llenado de columnas.
+		mo.addColumn("Patente"); //Se añade una columna llamada (Nombre).
+		mo.addColumn("Nombre de contacto"); //Se añade una columna llamada (Asignatura).
+		mo.addColumn("Tipo de atención"); //Se añade una columna llamada (Promedio).
+		
+		//4. Proceso de agregación de filas.
+		for (Automovil au : automovilesFiltrados) {
+			Object[] fila = new Object[3];
+			fila[0] = au.getPatente();
+			fila[1] = au.getNombreDeContacto();
+			fila[2] = au.getTipoDeAtencion();
+			mo.addRow(fila);
+		}	
+		
+		//5. Proceso de definir en la tabla el TableModel.
+		tableMostrarAutomovil.setModel(mo);
+	}
 		
 	private void cargarTabla() {
 		//1. Proceso de traer los estudiantes ingresados.

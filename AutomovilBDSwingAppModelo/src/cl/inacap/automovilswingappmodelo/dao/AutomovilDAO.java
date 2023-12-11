@@ -10,7 +10,6 @@ import cl.inacap.automovilswingappmodelo.util.BDUtil;
 import java.util.ArrayList;
 
 public class AutomovilDAO {
-	
 	private BDUtil bdUtil = new BDUtil();
 	
 	//Método que añade objetos de tipo Automovil a la tabla automoviles que se encuentra en la base de datos.
@@ -174,5 +173,4 @@ public class AutomovilDAO {
 			bdUtil.desconectar(); //Envia la petición de desconexión al dbms.
 		}
 	}
-
 }
